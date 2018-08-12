@@ -36,7 +36,7 @@ public class CSVReaderTest {
         reader.loadFile();
         reader.parseColumns();
 
-        assertEquals("val0,0", reader.getField(0,0));
+        assertEquals("val0.0", reader.getField(0,0));
 
     }
 
