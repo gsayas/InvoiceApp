@@ -43,6 +43,14 @@ public class CSVReader {
 
     }
 
+    public String getField(int rowIndex, int colIndex) {
+        if(rowIndex >= 0 && colIndex >= 0 && rowIndex < getNumRows() && colIndex < getNumCols()){
+            return columns.get(rowIndex)[colIndex];
+        }else {
+            throw new IndexOutOfBoundsException();
+        }
+    }
+
     public int getNumRows() {
         return lines.size();
     }
@@ -51,11 +59,4 @@ public class CSVReader {
         return columns.size();
     }
 
-    public String getField(int rowIndex, int colIndex) {
-        if(rowIndex >= 0 && colIndex >= 0 && rowIndex < getNumRows() && colIndex < getNumCols()){
-            return columns.get(rowIndex)[colIndex];
-        }else {
-            throw new IndexOutOfBoundsException();
-        }
-    }
 }
