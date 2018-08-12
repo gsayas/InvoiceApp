@@ -12,6 +12,8 @@ public class CSVReader {
     private String csvFile;
     private String cvsSplitBy;
     private List<String> lines;
+    private ArrayList<String[]> columns;
+    private String[] columnTitles;
 
     public CSVReader(String filePath) {
         csvFile = filePath;
@@ -20,19 +22,26 @@ public class CSVReader {
     }
 
     public void loadFile() {
-        String line = "";
+        String line;
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
-
             while ((line = br.readLine()) != null) {
-
                 lines.add(line);
-
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void parseColumns() {
+        System.out.println("parsing columns!! ");
+        columnTitles = lines.get(0).split(cvsSplitBy);
+        columns = new ArrayList<String[]>();
+
+        for (int i = 1; i < lines.size(); i++) {
+            columns.add(lines.get(i).split(cvsSplitBy));
+        }
+
     }
 
     public int getNumRows() {
@@ -40,7 +49,10 @@ public class CSVReader {
     }
 
     public int getNumCols() {
-        return 0;
+        return columns.size();
     }
 
+    public String getField(int i, int i1) {
+        return "";
+    }
 }

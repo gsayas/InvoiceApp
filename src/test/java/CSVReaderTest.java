@@ -19,7 +19,24 @@ public class CSVReaderTest {
         reader.loadFile();
 
         assertEquals(3, reader.getNumRows());
-        //assertEquals(2, reader.getNumCols());
+
+    }
+
+    @Test
+    public void testParseColumns() {
+        reader.loadFile();
+        reader.parseColumns();
+
+        assertEquals(2, reader.getNumCols());
+
+    }
+
+    @Test
+    public void testGetField() {
+        reader.loadFile();
+        reader.parseColumns();
+
+        assertEquals("val0,0", reader.getField(0,0));
 
     }
 
