@@ -93,4 +93,14 @@ public class CSVReader {
 
         return columnIndex != -1;
     }
+
+    public double getColumnTotal(String columnTitle) {
+        double total = 0.00;
+        int columnIndex = columnTitles.indexOf(columnTitle);
+
+        for(String cell : cells.get(columnIndex))
+            total += Double.parseDouble(cell);
+
+        return total;
+    }
 }

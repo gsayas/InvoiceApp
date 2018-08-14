@@ -53,7 +53,14 @@ public class CSVReaderTest {
         assertEquals("val1.1", reader.getField(1,1));
         reader.deleteColumnByTitle("col2");
         assertEquals("col1,col3", reader.printColumnTitles());
-        assertEquals("val1.2", reader.getField(1,1));
+        assertEquals("5", reader.getField(1,1));
+    }
+
+    @Test
+    public void testGetColumnTotal() {
+        reader.loadAndParseFile();
+
+        assertEquals(9.5, reader.getColumnTotal("col3"), 0.001);
     }
 
 }
